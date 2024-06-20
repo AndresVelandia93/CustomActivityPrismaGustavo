@@ -79,6 +79,7 @@ define(['postmonger'], (Postmonger) => {
 
     //Function for finish process and save Set Up
     function save() {
+        /*
         var SelectContacto = $('#SelectContacto').val();
         var IdCampana = $('#IdCampana').val();
         var TimeToLive = $('#TimeToLive').val();
@@ -118,32 +119,29 @@ define(['postmonger'], (Postmonger) => {
                     Nombre = Nombre.replace(new RegExp('{{' + key + '}}', 'g'), schemaMap[key]);
                     Modulo = Modulo.replace(new RegExp('{{' + key + '}}', 'g'), schemaMap[key]);
             }
-        }
-        var v_AccountID = SelectContacto.split('.').pop().replace("}}", '');
-        var v_GrupoControlador = GrupoControlador.split('.').pop().replace("}}", '');
+        }*/
+        //var v_AccountID = SelectContacto.split('.').pop().replace("}}", '');
+        //var v_GrupoControlador = GrupoControlador.split('.').pop().replace("}}", '');
 
         var inArguments = [];
 
         inArguments.push({ "SelectContacto": "Contacto" });
-        inArguments.push({ "IdCampana": IdCampana });
-        inArguments.push({ "TimeToLive": TimeToLive });
-        inArguments.push({ "Categoria": Categoria });
-        inArguments.push({ "Title": Title });
-        inArguments.push({ "ShortDescription": ShortDescription });
-        inArguments.push({ "LongDescription": LongDescription });
-        inArguments.push({ "CallToAction": CallToAction });
-        inArguments.push({ "CallToActionLabel": CallToActionLabel });
-        inArguments.push({ "SecondaryCallToAction": SecondaryCallToAction });
-        inArguments.push({ "SecondaryCallToActionLabel": SecondaryCallToActionLabel });
-        inArguments.push({ "Nombre": Nombre });
-        inArguments.push({ "Modulo": Modulo });
-        inArguments.push({ "ExtensionDatos": dataExtension });
+        inArguments.push({ "IdCampana": "Contacto" });
+        inArguments.push({ "TimeToLive": "Contacto" });
+        inArguments.push({ "Categoria": "Contacto" });
+        inArguments.push({ "Title": "Contacto" });
+        inArguments.push({ "ShortDescription": "Contacto" });
+        inArguments.push({ "LongDescription": "Contacto" });
+        inArguments.push({ "CallToAction": "Contacto" });
+        inArguments.push({ "CallToActionLabel": "Contacto" });
+        inArguments.push({ "SecondaryCallToAction": "Contacto" });
+        inArguments.push({ "SecondaryCallToActionLabel": "Contacto" });
+        inArguments.push({ "Nombre": "Contacto" });
+        inArguments.push({ "Modulo": "Contacto" });
+        inArguments.push({ "ExtensionDatos": "Contacto" });
         inArguments.push({ "GrupoControlador": "Grupo"});
 
         console.log('Payload:', JSON.stringify(inArguments));
-        console.log('SelectContacto:', SelectContacto);
-        console.log('SelectContacto V2:', v_AccountID);
-        console.log('GrupoControlador:', v_GrupoControlador);
         console.log('schemaMap:', JSON.stringify(schemaMap));
 
         // Atualiza o payload
