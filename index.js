@@ -5,7 +5,7 @@ const bodyParser = require('body-parser');
 const axios = require('axios');
 const decodeJwt = require('./JwtDecoder');
 
-const secret = 'GvblUlBPtysgVUp4eRZb2Vbujm9TlsusexKSvZixpWuPXP4kel0DyXQnr53nPEj0z9qKyktzW-a6zwHrXqEVxro-79UXuteQKAcXaG570xCPW4FAg8irkbth-MBnhDtkuQP8YM0A8sNNImjci67YJrsdJvr8zOwNBvGhyC8YnV7k1lBPtLF7UWpj7BcNQCo-pJJ7T0ubLDGbve5WwKSlmNOOQhXp3EIYyO0HuVXXmLMyaYNKnGr1Dw7taU3Mtw2';
+const secret = 'Z4B6LLU3PAXQvxnubSYWcrffjANmjC5Gum68OKDG_o7fTXZSr2qul9tfY2QgC_XScy4B9UnGfpghp1lkGq1YDn0a8aUbT2lI2blUt2FlPaKU4Nd1d4jjB3LQGQBPiHQigYeNyIx2hmWYPKqUjjpKWNWEPIaNyeSXFm90Qo2G53MYLru-3GI4xm7l09gOddZzvsseAxf3YEkVpx2h2WZJSMtlboxerfdSKF0RBxZmPZRZb9WVtf8OcSOQOnakEw2';
 const pushApiUrl = 'https://cloud.mensajes.payway.com.ar/JSON_API_SendPushy';
 
 app.use(express.static(path.join(__dirname, 'public')));
