@@ -44,30 +44,31 @@ app.post('/execute', async (req, res) => {
     console.log('Execute route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
     console.log('Decoded JWT:', decoded);
-    
-    const inArguments = decoded.inArguments;
-    
-    if (!Array.isArray(inArguments) || inArguments.length === 0) {
-        res.status(400).send('No inArguments provided');
-        return;
-    }
-    const SelectContacto = inArguments.find(arg => 'SelectContacto' in arg)?.SelectContacto;
-    const IdCampana = inArguments.find(arg => 'IdCampana' in arg)?.IdCampana;
-    const TimeToLive = inArguments.find(arg => 'TimeToLive' in arg)?.TimeToLive;
-    const Categoria = inArguments.find(arg => 'Categoria' in arg)?.Categoria;
-    const Title = inArguments.find(arg => 'Title' in arg)?.Title;
-    const ShortDescription = inArguments.find(arg => 'ShortDescription' in arg)?.ShortDescription;
-    const LongDescription = inArguments.find(arg => 'LongDescription' in arg)?.LongDescription;
-    const CallToAction = inArguments.find(arg => 'CallToAction' in arg)?.CallToAction;
-    const CallToActionLabel = inArguments.find(arg => 'CallToActionLabel' in arg)?.CallToActionLabel;
-    const SecondaryCallToAction = inArguments.find(arg => 'SecondaryCallToAction' in arg)?.SecondaryCallToAction;
-    const SecondaryCallToActionLabel = inArguments.find(arg => 'SecondaryCallToActionLabel' in arg)?.SecondaryCallToActionLabel;
-    const Nombre = inArguments.find(arg => 'Nombre' in arg)?.Nombre;
-    const Modulo = inArguments.find(arg => 'Modulo' in arg)?.Modulo;
-    const ExtensionDatos = inArguments.find(arg => 'ExtensionDatos' in arg)?.ExtensionDatos;
-    const GrupoControlador = inArguments.find(arg => 'GrupoControlador' in arg)?.GrupoControlador;
 
     try {
+        const inArguments = decoded.inArguments;
+    
+        if (!Array.isArray(inArguments) || inArguments.length === 0) {
+            res.status(400).send('No inArguments provided');
+            return;
+        }
+        const SelectContacto = inArguments.find(arg => 'SelectContacto' in arg)?.SelectContacto;
+        const IdCampana = inArguments.find(arg => 'IdCampana' in arg)?.IdCampana;
+        const TimeToLive = inArguments.find(arg => 'TimeToLive' in arg)?.TimeToLive;
+        const Categoria = inArguments.find(arg => 'Categoria' in arg)?.Categoria;
+        const Title = inArguments.find(arg => 'Title' in arg)?.Title;
+        const ShortDescription = inArguments.find(arg => 'ShortDescription' in arg)?.ShortDescription;
+        const LongDescription = inArguments.find(arg => 'LongDescription' in arg)?.LongDescription;
+        const CallToAction = inArguments.find(arg => 'CallToAction' in arg)?.CallToAction;
+        const CallToActionLabel = inArguments.find(arg => 'CallToActionLabel' in arg)?.CallToActionLabel;
+        const SecondaryCallToAction = inArguments.find(arg => 'SecondaryCallToAction' in arg)?.SecondaryCallToAction;
+        const SecondaryCallToActionLabel = inArguments.find(arg => 'SecondaryCallToActionLabel' in arg)?.SecondaryCallToActionLabel;
+        const Nombre = inArguments.find(arg => 'Nombre' in arg)?.Nombre;
+        const Modulo = inArguments.find(arg => 'Modulo' in arg)?.Modulo;
+        const ExtensionDatos = inArguments.find(arg => 'ExtensionDatos' in arg)?.ExtensionDatos;
+        const GrupoControlador = inArguments.find(arg => 'GrupoControlador' in arg)?.GrupoControlador;
+
+
         console.log('Enviando mensaje de push por API de Pushy en SFMC');
         const response = await axios.post(pushApiUrl, 
         {
