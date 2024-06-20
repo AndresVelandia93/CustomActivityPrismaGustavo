@@ -1,28 +1,49 @@
-define(function (require) {
-    var Postmonger = require('postmonger');
-    var connection = new Postmonger.Session();
-    var payload = {};
-    var eventDefinitionKey;
-    var schema;
-    var dataExtension;
-  
-    $(window).ready(function () {
-        connection.trigger('ready');
-        connection.trigger('requestInteraction');
-    });
+define(['postmonger'], (Postmonger) => {
+    const connection = new Postmonger.Session();
 
-    connection.on('initActivity', function (data) {
+    let payload = {};
+    let eventDefinitionKey;
+    let schema;
+    let dataExtension;
+
+
+    $(window).ready(onRender);
+
+
+    connection.on('initActivity', initialize);
+
+    connection.on('requestedTriggerEventDefinition', onRequestEventDefinition);
+
+    connection.on('requestedSchema', onRequestSchema);
+
+    connection.on('clickedNext', onClickedNext);
+
+    connection.on('clickedBack', onClickedBack);
+
+
+    //This function executes on render the page
+    function onRender() {
+        connection.trigger('ready');
+        connection.trigger('requestSchema');
+        connection.trigger('requestTriggerEventDefinition');
+    }
+
+    
+    function initialize(data) {
+        //Funcion que carga todo el payload de la custom activity en una variable
         if (data && data['arguments'] && data['arguments'].execute.inArguments.length > 0) {
             payload = data;
         }
-    });
+    }
 
-    connection.on('requestedInteraction', function (settings) {
-        eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
-        connection.trigger('requestSchema');
-    });
+    function onRequestEventDefinition(eventDefinition) {
+        if(eventDefinition){
+            dataExtension = eventDefinition.dataExtensionName;
+        } 
+    }
 
-    connection.on('requestedSchema', function (data) {
+
+    function onRequestSchema(data) {
         //Funcion que permite obtener el esquema de la fuente de datos del Journey
         schema = data['schema'];
         $('#SelectContacto').empty();
@@ -34,29 +55,22 @@ define(function (require) {
 
         var inArgs = payload["arguments"].execute.inArguments;
         for(var i = 0; i < inArgs.length; i++) {
-			var inArg = inArgs[i];
-			var inArgKey = Object.keys(inArg)[0];
-			if(document.getElementById(inArgKey)) $('#' + inArgKey).val(inArgs[i][inArgKey]); 
-		} 
+            var inArg = inArgs[i];
+            var inArgKey = Object.keys(inArg)[0];
+            if(document.getElementById(inArgKey)) $('#' + inArgKey).val(inArgs[i][inArgKey]); 
+        }
+    }
 
-    });
-    
-    connection.trigger('requestTriggerEventDefinition');
-    connection.on('requestedTriggerEventDefinition',
-        function(eventDefinitionModel) {
-            if(eventDefinitionModel){
-                dataExtension = eventDefinitionModel.dataExtensionName;
-            }    
-    });
+    function onClickedNext() {
+        save();
+    }
 
-    connection.on('clickedNext', function () {
-        save(); 
-    });
-
-    connection.on('clickedBack', function () {
+    function onClickedBack() {
         connection.trigger('prevStep');
-    });
+    }
+    
 
+    //Function for finish process and save Set Up
     function save() {
         var SelectContacto = $('#SelectContacto').val();
         var IdCampana = $('#IdCampana').val();
@@ -141,5 +155,4 @@ define(function (require) {
         // Atualiza a atividade com o payload
         connection.trigger('updateActivity', payload);
     }
-
 });
