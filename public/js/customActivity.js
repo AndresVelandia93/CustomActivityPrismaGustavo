@@ -1,13 +1,10 @@
 define(function (require) {
     var Postmonger = require('postmonger');
-    var $ = require('jquery');
     var connection = new Postmonger.Session();
     var payload = {};
     var eventDefinitionKey;
     var schema;
     var dataExtension;
- 
-
   
     $(window).ready(function () {
         connection.trigger('ready');
