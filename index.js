@@ -11,6 +11,9 @@ const pushApiUrl = 'https://cloud.mensajes.payway.com.ar/JSON_API_SendPushy';
 app.use(express.static(path.join(__dirname, 'public')));
 app.use(bodyParser.raw({ type: 'application/jwt' }));
 
+
+app.set('port', process.env.PORT || 3000);
+
 app.post('/save', (req, res) => {
     console.log('Save route');
     //const decoded = decodeJwt(req.body.toString('utf8'), secret);
@@ -52,7 +55,5 @@ app.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'public', 'index.html'));
 });
 
-const PORT = process.env.PORT || 8080;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
-});
+
+app.listen(app.get('port'), () => console.log('App listening on port ' + app.get('port')));
