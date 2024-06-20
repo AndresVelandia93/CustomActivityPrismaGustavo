@@ -150,7 +150,7 @@ define(['postmonger'], (Postmonger) => {
         var jsonPayload = JSON.stringify(payload);
 
         // Exibe o payload no console
-        //console.log('Payload:', jsonPayload);
+        console.log('Payload:', jsonPayload);
 
         // Atualiza a atividade com o payload
         connection.trigger('updateActivity', payload);
