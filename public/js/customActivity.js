@@ -142,7 +142,7 @@ define(['postmonger'], (Postmonger) => {
         inArguments.push({ "GrupoControlador": "Grupo"});
 
         console.log('Payload:', JSON.stringify(inArguments));
-        console.log('schemaMap:', JSON.stringify(schemaMap));
+        //console.log('schemaMap:', JSON.stringify(schemaMap));
 
         // Atualiza o payload
         payload['arguments'] = payload['arguments'] || {};
