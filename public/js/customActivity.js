@@ -124,7 +124,7 @@ define(['postmonger'], (Postmonger) => {
 
         var inArguments = [];
 
-        inArguments.push({ "SelectContacto": schemaMap[v_AccountID] });
+        inArguments.push({ "SelectContacto": "Contacto" });
         inArguments.push({ "IdCampana": IdCampana });
         inArguments.push({ "TimeToLive": TimeToLive });
         inArguments.push({ "Categoria": Categoria });
@@ -138,7 +138,7 @@ define(['postmonger'], (Postmonger) => {
         inArguments.push({ "Nombre": Nombre });
         inArguments.push({ "Modulo": Modulo });
         inArguments.push({ "ExtensionDatos": dataExtension });
-        inArguments.push({ "GrupoControlador": schemaMap[v_GrupoControlador] });
+        inArguments.push({ "GrupoControlador": "Grupo"});
 
         console.log('Payload:', JSON.stringify(inArguments));
         console.log('SelectContacto:', SelectContacto);
