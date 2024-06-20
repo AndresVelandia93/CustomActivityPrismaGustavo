@@ -12,6 +12,8 @@ define(['postmonger'], (Postmonger) => {
 
     connection.on('initActivity', initialize);
 
+    connection.on('requestedInteraction', onRequestInteraction);
+
     connection.on('requestedTriggerEventDefinition', onRequestEventDefinition);
 
     connection.on('requestedSchema', onRequestSchema);
@@ -24,8 +26,6 @@ define(['postmonger'], (Postmonger) => {
     //This function executes on render the page
     function onRender() {
         connection.trigger('ready');
-        connection.trigger('requestSchema');
-        connection.trigger('requestTriggerEventDefinition');
     }
 
     
@@ -34,6 +34,12 @@ define(['postmonger'], (Postmonger) => {
         if (data && data['arguments'] && data['arguments'].execute.inArguments.length > 0) {
             payload = data;
         }
+    }
+
+    function onRequestInteraction(settings){
+        eventDefinitionKey = settings.triggers[0].metaData.eventDefinitionKey;
+        connection.trigger('requestSchema');
+        connection.trigger('requestTriggerEventDefinition');
     }
 
     function onRequestEventDefinition(eventDefinition) {
