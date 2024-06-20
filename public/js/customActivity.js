@@ -26,6 +26,7 @@ define(['postmonger'], (Postmonger) => {
     //This function executes on render the page
     function onRender() {
         connection.trigger('ready');
+        connection.trigger('requestInteraction');
     }
 
     
