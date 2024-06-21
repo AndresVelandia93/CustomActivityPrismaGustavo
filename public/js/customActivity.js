@@ -141,7 +141,7 @@ define(['postmonger'], (Postmonger) => {
         inArguments.push({ "ExtensionDatos": "Contacto" });
         //inArguments.push({ "GrupoControlador": "Grupo"});
 
-        console.log('Payload:', JSON.stringify(inArguments));
+        //console.log('Payload:', JSON.stringify(inArguments));
         //console.log('schemaMap:', JSON.stringify(schemaMap));
 
         // Atualiza o payload
