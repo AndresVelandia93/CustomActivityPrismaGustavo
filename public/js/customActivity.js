@@ -52,20 +52,17 @@ define(['postmonger'], (Postmonger) => {
 
     function onRequestSchema(data) {
         //Funcion que permite obtener el esquema de la fuente de datos del Journey
-        schema = data['schema'];
-        $('#SelectContacto').empty();
+        schema = data.schema;
 
-        schema.forEach(element => {              
-            var option = {value: "{{" + element.key + "}}", text: element.name};
-            $('#SelectContacto').append($('<option>', option));
+        var columns = schema.map(function (column) {
+            return column.key.split('.').pop();
         });
 
-        var inArgs = payload["arguments"].execute.inArguments;
-        for(var i = 0; i < inArgs.length; i++) {
-            var inArg = inArgs[i];
-            var inArgKey = Object.keys(inArg)[0];
-            if(document.getElementById(inArgKey)) $('#' + inArgKey).val(inArgs[i][inArgKey]); 
-        }
+        $('#SelectContacto').empty();
+
+        columns.forEach(function (column) {
+          $('#SelectContacto').append(new Option(column, column));
+        });
     }
 
     function onClickedNext() {
@@ -79,7 +76,6 @@ define(['postmonger'], (Postmonger) => {
 
     //Function for finish process and save Set Up
     function save() {
-        /*
         var SelectContacto = $('#SelectContacto').val();
         var IdCampana = $('#IdCampana').val();
         var TimeToLive = $('#TimeToLive').val();
@@ -93,7 +89,7 @@ define(['postmonger'], (Postmonger) => {
         var SecondaryCallToActionLabel = $('#SecondaryCallToActionLabel').val();
         var Nombre = $('#Nombre').val();
         var Modulo = $('#Modulo').val();
-        var GrupoControlador = '{{Event.' + eventDefinitionKey + '.Grupo_Controlador}}';
+        var GrupoControlador = 'Grupo_Controlador';
      
         var schemaMap = {};
 
@@ -119,7 +115,7 @@ define(['postmonger'], (Postmonger) => {
                     Nombre = Nombre.replace(new RegExp('{{' + key + '}}', 'g'), schemaMap[key]);
                     Modulo = Modulo.replace(new RegExp('{{' + key + '}}', 'g'), schemaMap[key]);
             }
-        }*/
+        }
         //var v_AccountID = SelectContacto.split('.').pop().replace("}}", '');
         //var v_GrupoControlador = GrupoControlador.split('.').pop().replace("}}", '');
 
