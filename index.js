@@ -8,11 +8,13 @@ const decodeJwt = require('./JwtDecoder');
 const secret = 'GvblUlBPtysgVUp4eRZb2Vbujm9TlsusexKSvZixpWuPXP4kel0DyXQnr53nPEj0z9qKyktzW-a6zwHrXqEVxro-79UXuteQKAcXaG570xCPW4FAg8irkbth-MBnhDtkuQP8YM0A8sNNImjci67YJrsdJvr8zOwNBvGhyC8YnV7k1lBPtLF7UWpj7BcNQCo-pJJ7T0ubLDGbve5WwKSlmNOOQhXp3EIYyO0HuVXXmLMyaYNKnGr1Dw7taU3Mtw2';
 const pushApiUrl = 'https://cloud.mensajes.payway.com.ar/JSON_API_SendPushy';
 
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.raw({ type: 'application/jwt' }));
-
 
 app.set('port', process.env.PORT || 3000);
+
+
+app.use(bodyParser.raw({ type: 'application/jwt' }));
+app.use(express.json());
+app.use(express.static(path.join(__dirname, 'public')));
 
 app.post('/save', (req, res) => {
     console.log('Save route');
@@ -50,10 +52,5 @@ app.post('/execute', async (req, res) => {
 
     //Aqui va codigo
 });
-
-app.get('/', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
-});
-
 
 app.listen(app.get('port'), () => console.log('App listening on port ' + app.get('port')));
