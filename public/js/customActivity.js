@@ -60,10 +60,12 @@ define(['postmonger'], (Postmonger) => {
 
         $('#SelectContacto').empty();
 
+        //Cargar Selectores con campos de extensiones de datos
         columns.forEach(function (column) {
           $('#SelectContacto').append(new Option(column, column));
         });
         
+        //Cargar la interface con los datos ya diligenciados
         var inArgs = payload["arguments"].execute.inArguments;
         for(var i = 0; i < inArgs.length; i++) {
 			var inArg = inArgs[i];
