@@ -2,9 +2,10 @@
   "name": "prisma-push-custom-activity",
   "version": "1.0.0",
   "description": "A custom activity for Salesforce Marketing Cloud to send Push messages via Prisma API.",
-  "main": "index.js",
+  "main": "server/index.js",
   "scripts": {
-    "start": "node ./index.js"
+    "start": "node server/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
     "axios": "^0.21.1",
