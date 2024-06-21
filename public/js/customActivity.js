@@ -32,7 +32,7 @@ define(['postmonger'], (Postmonger) => {
     
     function initialize(data) {
         //Funcion que carga todo el payload de la custom activity en una variable
-        if (data && data['arguments'] && data['arguments'].execute.inArguments.length > 0) {
+        if (data) {
             payload = data;
         }
     }
