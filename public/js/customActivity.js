@@ -145,10 +145,10 @@ define(['postmonger'], (Postmonger) => {
         //console.log('schemaMap:', JSON.stringify(schemaMap));
 
         // Atualiza o payload
-        payload['arguments'] = payload['arguments'] || {};
-        payload['arguments'].execute = payload['arguments'].execute || {};
+        //payload['arguments'] = payload['arguments'] || {};
+        //payload['arguments'].execute = payload['arguments'].execute || {};
         payload['arguments'].execute.inArguments = inArguments;
-        payload['metaData'] = payload['metaData'] || {};
+        //payload['metaData'] = payload['metaData'] || {};
         payload['metaData'].isConfigured = true;
 
         // Transforma o payload em JSON
