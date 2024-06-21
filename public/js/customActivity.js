@@ -63,6 +63,13 @@ define(['postmonger'], (Postmonger) => {
         columns.forEach(function (column) {
           $('#SelectContacto').append(new Option(column, column));
         });
+        
+        var inArgs = payload["arguments"].execute.inArguments;
+        for(var i = 0; i < inArgs.length; i++) {
+			var inArg = inArgs[i];
+			var inArgKey = Object.keys(inArg)[0];
+			if(document.getElementById(inArgKey)) $('#' + inArgKey).val(inArgs[i][inArgKey]); 
+		} 
     }
 
     function onClickedNext() {
