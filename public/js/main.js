@@ -12,7 +12,7 @@
 	}
 });
 
-requirejs(['jquery', 'custom_activity'], function ($, customEvent) {
+requirejs(['jquery', 'customActivity'], function ($, customEvent) {
     // Require loaded
 });
 
