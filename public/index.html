@@ -8,14 +8,7 @@
       <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
       <script type="text/javascript" src="js/jquery.min.js"></script>
       <script type="text/javascript" src="js/require.js"></script>
-      <script>
-         requirejs.config({
-           paths: {
-             postmonger: 'js/postmonger'
-           }
-         });
-         requirejs(['js/customActivity'], function (customActivity) { });
-      </script>
+      <script data-main="js/main" src="js/require.js"></script>
       <style>
         .header {
          color: #36A0FF;
