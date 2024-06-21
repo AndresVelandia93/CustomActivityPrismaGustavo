@@ -26,21 +26,25 @@
     "save": {
       "url": "https://customactivityprisma-7eih.onrender.com/save",
       "verb": "POST",
+      "format": "json",
       "useJwt": true
     },
     "publish": {
       "url": "https://customactivityprisma-7eih.onrender.com/publish",
       "verb": "POST",
+      "format": "json",
       "useJwt": true
     },
     "validate": {
       "url": "https://customactivityprisma-7eih.onrender.com/validate",
       "verb": "POST",
+      "format": "json",
       "useJwt": true
     },
     "stop": {
       "url": "https://customactivityprisma-7eih.onrender.com/stop",
       "verb": "POST",
+      "format": "json",
       "useJwt": true
     }
   },
@@ -52,26 +56,11 @@
     }
   },
   "schema": {
-    "arguments": {
-      "execute": {
-        "inArguments": [
-          {
-            "TitleColumn": {
-              "dataType": "Text",
-              "isNullable": false,
-              "direction": "In"
-            }
-          },
-          {
-            "ToColumn": {
-              "dataType": "Text",
-              "isNullable": false,
-              "direction": "In"
-            }
-          }
-        ],
-        "outArguments": []
-      }
-    }
-  }
+		"arguments": {
+			"execute": {
+				"inArguments": [],
+				"outArguments": []
+			}
+		}
+	}
 }
