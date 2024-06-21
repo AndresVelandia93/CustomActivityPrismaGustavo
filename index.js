@@ -54,4 +54,8 @@ app.post('/execute', async (req, res) => {
     res.status(200).send('execute');
 });
 
+app.get('/', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+});
+
 app.listen(app.get('port'), () => console.log('App listening on port ' + app.get('port')));
