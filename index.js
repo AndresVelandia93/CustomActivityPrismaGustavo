@@ -51,6 +51,7 @@ app.post('/execute', async (req, res) => {
     //console.log('Decoded JWT:', decoded);
 
     //Aqui va codigo
+    res.status(200).send('execute');
 });
 
 app.listen(app.get('port'), () => console.log('App listening on port ' + app.get('port')));
