@@ -70,7 +70,11 @@ define(['postmonger'], (Postmonger) => {
         for(var i = 0; i < inArgs.length; i++) {
 			var inArg = inArgs[i];
 			var inArgKey = Object.keys(inArg)[0];
-			if(document.getElementById(inArgKey)) $('#' + inArgKey).val(inArgs[i][inArgKey]); 
+            if(inArgKey == 'SelectContacto'){
+                $('#SelectContacto').val(inArgs[i][inArgKey].split('.').pop().replace("}}", ''));
+            }else{
+                if(document.getElementById(inArgKey)) $('#' + inArgKey).val(inArgs[i][inArgKey]); 
+            }
 		} 
     }
 
@@ -149,7 +153,7 @@ define(['postmonger'], (Postmonger) => {
         payload['metaData'].isConfigured = true;
 
         // Muestra payload en la consola
-        //console.log('Payload:', JSON.stringify(payload));
+        console.log('Payload:', JSON.stringify(payload));
 
         // Atualiza a atividade com o payload
         connection.trigger('updateActivity', payload);
