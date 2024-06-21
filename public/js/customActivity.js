@@ -139,7 +139,7 @@ define(['postmonger'], (Postmonger) => {
         inArguments.push({ "Nombre": "Contacto" });
         inArguments.push({ "Modulo": "Contacto" });
         inArguments.push({ "ExtensionDatos": "Contacto" });
-        inArguments.push({ "GrupoControlador": "Grupo"});
+        //inArguments.push({ "GrupoControlador": "Grupo"});
 
         console.log('Payload:', JSON.stringify(inArguments));
         //console.log('schemaMap:', JSON.stringify(schemaMap));
