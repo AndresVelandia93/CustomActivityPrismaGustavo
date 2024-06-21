@@ -116,42 +116,31 @@ define(['postmonger'], (Postmonger) => {
                     Modulo = Modulo.replace(new RegExp('{{' + key + '}}', 'g'), schemaMap[key]);
             }
         }
-        //var v_AccountID = SelectContacto.split('.').pop().replace("}}", '');
-        //var v_GrupoControlador = GrupoControlador.split('.').pop().replace("}}", '');
 
         var inArguments = [];
 
-        inArguments.push({ "SelectContacto": "Contacto" });
-        inArguments.push({ "IdCampana": "Contacto" });
-        inArguments.push({ "TimeToLive": "Contacto" });
-        inArguments.push({ "Categoria": "Contacto" });
-        inArguments.push({ "Title": "Contacto" });
-        inArguments.push({ "ShortDescription": "Contacto" });
-        inArguments.push({ "LongDescription": "Contacto" });
-        inArguments.push({ "CallToAction": "Contacto" });
-        inArguments.push({ "CallToActionLabel": "Contacto" });
-        inArguments.push({ "SecondaryCallToAction": "Contacto" });
-        inArguments.push({ "SecondaryCallToActionLabel": "Contacto" });
-        inArguments.push({ "Nombre": "Contacto" });
-        inArguments.push({ "Modulo": "Contacto" });
-        inArguments.push({ "ExtensionDatos": "Contacto" });
-        //inArguments.push({ "GrupoControlador": "Grupo"});
+        inArguments.push({ "SelectContacto": schemaMap[SelectContacto] });
+        inArguments.push({ "IdCampana": IdCampana });
+        inArguments.push({ "TimeToLive": TimeToLive });
+        inArguments.push({ "Categoria": Categoria });
+        inArguments.push({ "Title": Title });
+        inArguments.push({ "ShortDescription": ShortDescription });
+        inArguments.push({ "LongDescription": LongDescription });
+        inArguments.push({ "CallToAction": CallToAction });
+        inArguments.push({ "CallToActionLabel": CallToActionLabel });
+        inArguments.push({ "SecondaryCallToAction": SecondaryCallToAction });
+        inArguments.push({ "SecondaryCallToActionLabel": SecondaryCallToActionLabel });
+        inArguments.push({ "Nombre": Nombre });
+        inArguments.push({ "Modulo": Modulo });
+        inArguments.push({ "ExtensionDatos": dataExtension });
+        inArguments.push({ "GrupoControlador": schemaMap[GrupoControlador] });
 
-        //console.log('Payload:', JSON.stringify(inArguments));
-        //console.log('schemaMap:', JSON.stringify(schemaMap));
-
-        // Atualiza o payload
-        //payload['arguments'] = payload['arguments'] || {};
-        //payload['arguments'].execute = payload['arguments'].execute || {};
+        // Actualiza payload
         payload['arguments'].execute.inArguments = inArguments;
-        //payload['metaData'] = payload['metaData'] || {};
         payload['metaData'].isConfigured = true;
 
-        // Transforma o payload em JSON
-        var jsonPayload = JSON.stringify(payload);
-
-        // Exibe o payload no console
-        console.log('Payload:', jsonPayload);
+        // Muestra payload en la consola
+        console.log('Payload:', JSON.stringify(payload));
 
         // Atualiza a atividade com o payload
         connection.trigger('updateActivity', payload);
