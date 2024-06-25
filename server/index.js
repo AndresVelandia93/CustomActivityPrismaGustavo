@@ -2,7 +2,7 @@ const express = require('express');
 const app = express();
 const path = require('path');
 const bodyParser = require('body-parser');
-const axios = require('axios');
+const rp = require('request-promise');
 const decodeJwt = require('./JwtDecoder');
 const Pkg = require(path.join(__dirname, '../', 'package.json'));
 
@@ -76,31 +76,36 @@ app.post('/execute', async (req, res) => {
 
 
         console.log('Enviando mensaje de push por API de Pushy en SFMC');
-        const response = await axios.post(pushApiUrl, 
-        {
-            IdCampana: IdCampana,
-            TimeToLive: TimeToLive,
-            Categoria: Categoria,
-            Title: Title,
-            ShortDescription: ShortDescription,
-            LongDescription: LongDescription,
-            CallToAction: CallToAction,
-            CallToActionLabel: CallToActionLabel,
-            SecondaryCallToAction: SecondaryCallToAction,
-            SecondaryCallToActionLabel: SecondaryCallToActionLabel,
-            Nombre: Nombre,
-            Modulo: Modulo,
-            AccountID: SelectContacto,
-            Ambiente: "QA",
-            ExtensionDatos: ExtensionDatos,
-            GrupoControlador: GrupoControlador
-        }, {
+        var postData = {
+            method: 'POST',
+            uri: pushApiUrl,
             headers: {
-                'Content-Type': 'application/json',
-            }
-        });
-
-        console.log('Respuesta de envio:', JSON.stringify(response.data));
+              'content-type': 'application/json',
+              'Accept': 'application/json'
+            },
+            body:
+            {
+                IdCampana: IdCampana,
+                TimeToLive: TimeToLive,
+                Categoria: Categoria,
+                Title: Title,
+                ShortDescription: ShortDescription,
+                LongDescription: LongDescription,
+                CallToAction: CallToAction,
+                CallToActionLabel: CallToActionLabel,
+                SecondaryCallToAction: SecondaryCallToAction,
+                SecondaryCallToActionLabel: SecondaryCallToActionLabel,
+                Nombre: Nombre,
+                Modulo: Modulo,
+                AccountID: SelectContacto,
+                Ambiente: "QA",
+                ExtensionDatos: ExtensionDatos,
+                GrupoControlador: GrupoControlador
+            },
+            json: true
+        };
+        rp(postData).then(function (response) {
+            console.log('Respuesta de envio:', JSON.stringify(response.data));
 
         if (response.status == 200 && response.data.Estado == 'Enviado') {
             res.status(200).send('Mensage de push enviada con exito');
@@ -109,6 +114,14 @@ app.post('/execute', async (req, res) => {
         } else {
             res.status(400).send(response.data.Estado);
         }
+            console.log("Success Send Heroku");
+        })
+          .catch(function (err) {
+            console.log(err);
+            console.log("Failed Send");
+        });
+
+        
     } catch (error) {
         console.error('Error al enviar mensaje de push:', error.message);
         res.status(500).send('Error al enviar mensaje de push');
