@@ -74,6 +74,7 @@ app.post('/execute', async (req, res) => {
         const ExtensionDatos = inArguments.find(arg => 'ExtensionDatos' in arg)?.ExtensionDatos;
         const GrupoControlador = inArguments.find(arg => 'GrupoControlador' in arg)?.GrupoControlador;
 
+
         console.log('Enviando mensaje de push por API de Pushy en SFMC');
         const response = await axios.post(pushApiUrl, 
         {
