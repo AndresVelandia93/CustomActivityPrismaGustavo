@@ -102,7 +102,7 @@ define(['postmonger'], (Postmonger) => {
         var SecondaryCallToActionLabel = $('#SecondaryCallToActionLabel').val();
         var Nombre = $('#Nombre').val();
         var Modulo = $('#Modulo').val();
-        var GrupoControlador = 'Grupo_Controlador';
+        var GrupoControlador = 'Grupo_Controlador_Push';
      
         var schemaMap = {};
 
