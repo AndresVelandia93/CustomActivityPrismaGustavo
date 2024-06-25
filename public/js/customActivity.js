@@ -153,7 +153,7 @@ define(['postmonger'], (Postmonger) => {
         payload['metaData'].isConfigured = true;
 
         // Muestra payload en la consola
-        console.log('Payload:', JSON.stringify(payload));
+        //console.log('Payload:', JSON.stringify(payload));
 
         // Atualiza a atividade com o payload
         connection.trigger('updateActivity', payload);
