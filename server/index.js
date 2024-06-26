@@ -39,7 +39,7 @@ app.post('/validate', (req, res) => {
 });
 
 app.post('/stop', (req, res) => {
-    //console.log('Stop route');
+    console.log('Stop route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
     //console.log('Decoded JWT:', decoded);
     res.status(200).send('Stop');
@@ -47,7 +47,7 @@ app.post('/stop', (req, res) => {
 
 
 app.post('/execute', async (req, res) => {
-    console.log('Execute route');
+    //console.log('Execute route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
     //console.log('Decoded JWT:', decoded);
     try {
