@@ -103,6 +103,8 @@ app.post('/execute', async (req, res) => {
 
         if (response.status == 200 && response.data.Estado == 'Enviado') {
             res.status(200).send('Mensage de push enviada con exito');
+        } else if (response.status == 200 && response.data.Estado == 'Enviado_Anteriormente') {
+            res.status(200).send('Mensage de push enviada con exito');
         } else if (response.status == 200 && response.data.Estado == 'Error') {
             res.status(500).send(response.data.Estado);
         } else {
