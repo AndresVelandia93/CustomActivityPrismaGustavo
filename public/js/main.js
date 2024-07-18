@@ -1,6 +1,8 @@
 requirejs.config({
 	paths: {
-	  postmonger: 'postmonger'
+		postmonger: 'postmonger',
+		'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min'
+	  
 	},
 	shim: {
 	  'custom_activity': {
