@@ -1,7 +1,7 @@
 requirejs.config({
 	paths: {
 		postmonger: 'postmonger',
-		'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min'
+		'jquery': 'https://cdnjs.cloudflare.com/ajax/libs/jquery/3.6.0/jquery.min.js'
 	  
 	},
 	shim: {
