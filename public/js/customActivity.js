@@ -1,4 +1,4 @@
-define(['postmonger'], function (Postmonger) {
+define(['postmonger'], (Postmonger) => {
     const connection = new Postmonger.Session();
 
     let payload = {};
@@ -7,9 +7,7 @@ define(['postmonger'], function (Postmonger) {
     let dataExtension;
 
 
-    document.addEventListener('DOMContentLoaded', function() {
-        onRender();
-    });
+    $(window).ready(onRender);
 
 
     connection.on('initActivity', initialize);
@@ -60,14 +58,11 @@ define(['postmonger'], function (Postmonger) {
             return column.key.split('.').pop();
         });
 
-        var SelectContacto = document.getElementById('SelectContacto');
-        empty(SelectContacto);
+        $('#SelectContacto').empty();
 
         //Cargar Selectores con campos de extensiones de datos
         columns.forEach(function (column) {
-            var newOption = new Option(column, column);
-            var selectElement = document.getElementById('SelectContacto');
-            selectElement.appendChild(newOption);
+          $('#SelectContacto').append(new Option(column, column));
         });
         
         //Cargar la interface con los datos ya diligenciados
@@ -76,13 +71,9 @@ define(['postmonger'], function (Postmonger) {
 			var inArg = inArgs[i];
 			var inArgKey = Object.keys(inArg)[0];
             if(inArgKey == 'SelectContacto'){
-                var selectContacto = document.getElementById('SelectContacto');
-                selectContacto.value = inArgs[i][inArgKey].split('.').pop().replace('}}', '');
+                $('#SelectContacto').val(inArgs[i][inArgKey].split('.').pop().replace("}}", ''));
             }else{
-                if(document.getElementById(inArgKey)){
-                    var inputObject = document.getElementById(inArgKey);
-                    inputObject.value = inArgs[i][inArgKey];
-                }
+                if(document.getElementById(inArgKey)) $('#' + inArgKey).val(inArgs[i][inArgKey]); 
             }
 		} 
     }
@@ -98,45 +89,19 @@ define(['postmonger'], function (Postmonger) {
 
     //Function for finish process and save Set Up
     function save() {
-        var selectElement_n1 = document.getElementById('SelectContacto');
-        var SelectContacto = selectElement_n1.value;
-
-        var selectElement_n2 = document.getElementById('IdCampana');
-        var IdCampana = selectElement_n2.value;
-
-        var selectElement_n3 = document.getElementById('TimeToLive');
-        var TimeToLive = selectElement_n3.value;
-
-        var selectElement_n4 = document.getElementById('Categoria');
-        var Categoria = selectElement_n4.value;
-
-        var selectElement_n5 = document.getElementById('Title');
-        var Title = selectElement_n5.value;
-
-        var selectElement_n6 = document.getElementById('ShortDescription');
-        var ShortDescription = selectElement_n6.value;
-
-        var selectElement_n7 = document.getElementById('LongDescription');
-        var LongDescription = selectElement_n7.value;
-
-        var selectElement_n8 = document.getElementById('CallToAction');
-        var CallToAction = selectElement_n8.value;
-
-        var selectElement_n9 = document.getElementById('CallToActionLabel');
-        var CallToActionLabel = selectElement_n9.value;
-        
-        var selectElement_n10 = document.getElementById('SecondaryCallToAction');
-        var SecondaryCallToAction = selectElement_n10.value;
-        
-        var selectElement_n11 = document.getElementById('SecondaryCallToActionLabel');
-        var SecondaryCallToActionLabel = selectElement_n11.value;
-        
-        var selectElement_n12 = document.getElementById('Nombre');
-        var Nombre = selectElement_n12.value;
-
-        var selectElement_n13 = document.getElementById('Modulo');
-        var Modulo = selectElement_n13.value;
-        
+        var SelectContacto = $('#SelectContacto').val();
+        var IdCampana = $('#IdCampana').val();
+        var TimeToLive = $('#TimeToLive').val();
+        var Categoria = $('#Categoria').val();
+        var Title = $('#Title').val();
+        var ShortDescription = $('#ShortDescription').val();
+        var LongDescription = $('#LongDescription').val();
+        var CallToAction = $('#CallToAction').val();
+        var CallToActionLabel = $('#CallToActionLabel').val();
+        var SecondaryCallToAction = $('#SecondaryCallToAction').val();
+        var SecondaryCallToActionLabel = $('#SecondaryCallToActionLabel').val();
+        var Nombre = $('#Nombre').val();
+        var Modulo = $('#Modulo').val();
         var GrupoControlador = 'Grupo_Controlador_Push';
      
         var schemaMap = {};
@@ -190,13 +155,7 @@ define(['postmonger'], function (Postmonger) {
         // Muestra payload en la consola
         //console.log('Payload:', JSON.stringify(payload));
 
-        // Atualiza la atividad con el payload
+        // Atualiza a atividade com o payload
         connection.trigger('updateActivity', payload);
-    }
-
-    function empty(element) {
-        while (element.firstChild) {
-            element.removeChild(element.firstChild);
-        }
     }
 });
