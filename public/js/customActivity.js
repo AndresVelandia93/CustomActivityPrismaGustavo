@@ -190,7 +190,7 @@ define(['postmonger'], function (Postmonger) {
         // Muestra payload en la consola
         //console.log('Payload:', JSON.stringify(payload));
 
-        // Atualiza a atividade com o payload
+        // Atualiza la atividad con el payload
         connection.trigger('updateActivity', payload);
     }
 
