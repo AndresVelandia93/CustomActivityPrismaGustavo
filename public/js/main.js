@@ -1,14 +1,11 @@
-  requirejs.config({
+requirejs.config({
 	paths: {
-		postmonger: 'postmonger'
+	  postmonger: 'postmonger'
 	},
 	shim: {
-		'jquery': {
-			exports: '$'
-		},
-		'custom_activity': {
-			deps: ['jquery', 'postmonger']
-		}
+	  'custom_activity': {
+		deps: ['postmonger']
+	  }
 	}
 });
 
