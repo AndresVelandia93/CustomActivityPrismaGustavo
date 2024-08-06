@@ -18,9 +18,9 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 app.post('/save', (req, res) => {
-    console.log('Save route'+req.toString('utf8'));
+    console.log('Save route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
-    //console.log('Decoded JWT:', decoded);
+    console.log('Decoded JWT:', decoded);
     res.status(200).send('Save');
 });
 
