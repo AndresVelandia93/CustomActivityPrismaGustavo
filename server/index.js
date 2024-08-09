@@ -20,10 +20,8 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.post('/save', (req, res) => {
     console.log('Save route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
+    console.log('Request:', req);
     console.log('Body JWT:', req.body.toString('utf8'));
-    const bufferData = Buffer.from('eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.ew0KICAiYWN0aXZpdHlPYmplY3RJRCI6ICI2NGI3YWU0OC0yZGVjLTRmNDAtYmE3OC05MDMxNWNhNWY5MTQiLA0KICAiaW50ZXJhY3Rpb25JZCI6ICIwNTgyNDVmNi0wNGQ0LTQ2NjgtOGU2YS0wYzcxOTA5N2UyZTQiLA0KICAib3JpZ2luYWxEZWZpbml0aW9uSWQiOiAiNWI3Y2NjODctZDUwNi00OTVhLWFiOWItM2QxMzhiYzFlOWM5IiwNCiAgImludGVyYWN0aW9uS2V5IjogImMxNzM2YTE2LTg0MzQtMjkxMC0xMTFhLTJiZGM3ZjI4ZjNkNyIsDQogICJpbnRlcmFjdGlvblZlcnNpb24iOiAiMzYiDQp9.hU51WQGMHbwZj6m6udJ86oYirjl0ISEjSrCbpwsgvFc', 'hex');
-
-    console.log('Buffer original:', bufferData);
     //console.log('Decoded JWT:', decoded);
     res.status(200).send('Save');
 });
