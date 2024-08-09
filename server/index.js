@@ -20,30 +20,32 @@ app.use(express.static(path.join(__dirname, '../public')));
 app.post('/save', (req, res) => {
     console.log('Save route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
-    console.log('Request:', req);
     console.log('Body JWT:', req.body.toString('utf8'));
-    //console.log('Decoded JWT:', decoded);
+    console.log('Decoded JWT:', decoded);
     res.status(200).send('Save');
 });
 
 app.post('/publish', (req, res) => {
     console.log('Publish route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
-    //console.log('Decoded JWT:', decoded);
+    console.log('Body JWT:', req.body.toString('utf8'));
+    console.log('Decoded JWT:', decoded);
     res.status(200).send('Publish');
 });
 
 app.post('/validate', (req, res) => {
     console.log('Validate route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
-    //console.log('Decoded JWT:', decoded);
+    console.log('Body JWT:', req.body.toString('utf8'));
+    console.log('Decoded JWT:', decoded);
     res.status(200).send('Validate');
 });
 
 app.post('/stop', (req, res) => {
     console.log('Stop route');
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
-    //console.log('Decoded JWT:', decoded);
+    console.log('Body JWT:', req.body.toString('utf8'));
+    console.log('Decoded JWT:', decoded);
     res.status(200).send('Stop');
 });
 
@@ -53,6 +55,7 @@ app.post('/execute', async (req, res) => {
     console.log('req:'+req);
     console.log(req.body.toString('utf8'));
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
+    console.log('Body JWT:', req.body.toString('utf8'));
     console.log('Decoded JWT:', decoded);
     try {
         const inArguments = decoded.inArguments;
