@@ -52,8 +52,6 @@ app.post('/stop', (req, res) => {
 
 app.post('/execute', async (req, res) => {
     console.log('Execute route');
-    console.log('req:'+req);
-    console.log(req.body.toString('utf8'));
     const decoded = decodeJwt(req.body.toString('utf8'), secret);
     console.log('Body JWT:', req.body.toString('utf8'));
     console.log('Decoded JWT:', decoded);
