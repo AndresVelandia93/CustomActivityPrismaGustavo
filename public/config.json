@@ -18,7 +18,8 @@
       "url": "https://customactivityprisma-7eih.onrender.com/execute",
       "verb": "POST",
       "format": "json",
-      "useJwt": true
+      "useJwt": true,
+      "customerKey": "ExternalKey_CA_PN"
     }
   },
   "configurationArguments": {
@@ -27,25 +28,29 @@
       "url": "https://customactivityprisma-7eih.onrender.com/save",
       "verb": "POST",
       "format": "json",
-      "useJwt": true
+      "useJwt": true,
+      "customerKey": "ExternalKey_CA_PN"
     },
     "publish": {
       "url": "https://customactivityprisma-7eih.onrender.com/publish",
       "verb": "POST",
       "format": "json",
-      "useJwt": true
+      "useJwt": true,
+      "customerKey": "ExternalKey_CA_PN"
     },
     "validate": {
       "url": "https://customactivityprisma-7eih.onrender.com/validate",
       "verb": "POST",
       "format": "json",
-      "useJwt": true
+      "useJwt": true,
+      "customerKey": "ExternalKey_CA_PN"
     },
     "stop": {
       "url": "https://customactivityprisma-7eih.onrender.com/stop",
       "verb": "POST",
       "format": "json",
-      "useJwt": true
+      "useJwt": true,
+      "customerKey": "ExternalKey_CA_PN"
     }
   },
   "userInterfaces": {
