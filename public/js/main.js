@@ -6,7 +6,7 @@ requirejs.config({
 		'jquery': {
 			exports: '$'
 		},
-		'custom_activity': {
+		'customActivity': {
 			deps: ['jquery', 'postmonger']
 		}
 	}
