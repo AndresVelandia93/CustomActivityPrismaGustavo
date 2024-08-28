@@ -1,7 +1,6 @@
 requirejs.config({
 	paths: {
-		postmonger: 'postmonger',
-		jquery: 'require'
+		postmonger: 'postmonger'
 	},
 	shim: {
 		'jquery': {
